@@ -48,3 +48,8 @@ h1 {
     height: 200px;
     width: 200px;
 }
+
+.flex-group {
+    display: flex;
+    gap: 1rem;
+}
