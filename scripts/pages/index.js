@@ -24,7 +24,7 @@ async function getPhotographers() {
         const photographer = await fetch('./data/photographers.json');
         
         // et bien retourner le tableau photographers seulement une fois récupéré
-        const jsonData = photographer.json();
+        const jsonData = await photographer.json();
         console.log(jsonData);
         return jsonData;
     }
