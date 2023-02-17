@@ -37,5 +37,35 @@ function photographerFactory(data) {
         description.appendChild(prix);
         return (lien);
     }
-    return { name, picture, getUserCardDOM }
+
+    function getInfoCardDOM() {
+        const description = document.createElement( 'div' );
+
+        const h2 = document.createElement( 'h2' );
+        h2.textContent = name;
+        h2.setAttribute("class", "description-name");
+       
+        const location = document.createElement( 'p' );
+        location.textContent = city+", "+country;
+        location.setAttribute("class", "description-location");
+
+        const bio = document.createElement( 'p' );
+        bio.textContent = tagline;
+        bio.setAttribute("class", "description-bio");
+
+        description.appendChild(h2);
+        description.appendChild(location);
+        description.appendChild(bio);
+
+        return (description);
+    }
+
+    function getPictureCardDOM() {
+        const img = document.createElement( 'img' );
+        img.setAttribute("src", picture);
+        return (img);
+    }
+
+    return { name, picture, price, getUserCardDOM, getInfoCardDOM, getPictureCardDOM}
 }
+

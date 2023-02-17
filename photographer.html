@@ -2,6 +2,8 @@
 <html>
   <head>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <link href="css/photographer.css" rel="stylesheet" type="text/css" />
+
     <meta charset="utf-8">
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
@@ -14,6 +16,23 @@
     <main id="main">
       <div class="photograph-header">
         <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+      </div>
+      <div class="photograph-section">
+        <div class="sort">
+          <label for="Tri">Trier par :</label>
+
+            <select name="Tri" id="Tri">
+              <option value="likes">Popularité</option>
+              <option value="date">Date</option>
+              <option value="title">Titre</option>
+              
+            </select>
+        </div>
+        <section class="galery-section">
+          <div class="tarif">
+            
+          </div>
+        </section>
       </div>
     </main>
     <div id="contact_modal">
@@ -31,6 +50,8 @@
 				</form>
 			</div>
 		</div>
+    <script src="scripts/factories/photographer.js"></script>
+    <script src="scripts/factories/galery.js"></script>
     <script src="/scripts/pages/photographer.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>
   </body>
