@@ -1,5 +1,17 @@
 #contact_modal {
     display: none;
+    
+    place-content: center;
+    
+
+}
+
+#lightbox_modal {
+    display: none;
+    
+    place-content: center;
+    
+
 }
 
 .photograph-header {
@@ -57,10 +69,15 @@
     margin: 0 100px;
 }
 
-
+.sort {
+    padding: 1rem 0;
+    font-size: 18px;
+    font-weight: bold;
+}
 
 .galery-section {
     display: grid;
+    gap: 2rem;
     grid-template-columns: 1fr 1fr 1fr; 
     justify-items: center;
 }
@@ -114,6 +131,8 @@
 }
 
 .modal {
+    position: absolute;
+    top: 5rem;
     border-radius: 5px;
     background-color: #DB8876;
     width: 50%;
@@ -132,12 +151,44 @@
 
 .modal header img {
     cursor: pointer;
+    color: #911C1C;
 }
 
 .modal header h2 {
     font-size: 64px;
     font-weight: normal;
     text-align: center;
+}
+
+.lightbox {
+    position: absolute;
+    top: 5rem;
+    border-radius: 5px;
+    background-color: lightgray;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin: auto;
+}
+
+.lightbox header {
+
+}
+
+.lightbox img {
+    cursor: pointer;
+}
+
+.lightbox header h2 {
+    font-size: 64px;
+    font-weight: normal;
+    text-align: center;
+}
+
+#lightbox_modal_media {
+    width: 100%;
 }
 
 form {
@@ -166,3 +217,26 @@ form input {
     border: none;
     border-radius: 5px;
 }
+
+#message {
+    height: 136px;
+}
+
+.formData[data-error]::after {
+    content: attr(data-error);
+    font-size: 18px;
+    color: red;
+    display: block;
+    margin-top: 7px;
+    margin-bottom: 7px;
+    text-align: right;
+    line-height: 0.3;
+    opacity: 0;
+    transition: 0.3s;
+  }
+  .formData[data-error-visible="true"]::after {
+    opacity: 1;
+  }
+  .formData[data-error-visible="true"] .text-control {
+    border: 2px solid red;
+  }

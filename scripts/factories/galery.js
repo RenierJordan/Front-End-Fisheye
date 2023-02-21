@@ -7,6 +7,7 @@ function galeryFactory(data) {
     function getGaleryCardDOM() {
 
         const article = document.createElement( 'article' );
+        article.setAttribute('class', 'galery-article')
 
         let media;
         if (data.hasOwnProperty('image')) {
@@ -18,6 +19,7 @@ function galeryFactory(data) {
             media.setAttribute("src", videos);
         }
         media.setAttribute("class", "article-media");
+        media.setAttribute('data-id', `${id}`)
 
         const description = document.createElement( 'div' );
 
@@ -35,5 +37,5 @@ function galeryFactory(data) {
         return (article);
     }
 
-    return { title, picture, likes,  getGaleryCardDOM}
+    return { title, picture, likes, price,  getGaleryCardDOM}
 }
