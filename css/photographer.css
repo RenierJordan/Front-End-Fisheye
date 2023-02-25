@@ -10,7 +10,12 @@
     display: none;
     
     place-content: center;
-    
+    position: fixed;
+    width: 100%;
+    right: 5%;
+    top: 5%;
+    height: 100%;
+    z-index: 1;
 
 }
 
@@ -173,9 +178,7 @@
     margin: auto;
 }
 
-.lightbox header {
 
-}
 
 .lightbox img {
     cursor: pointer;
@@ -189,6 +192,11 @@
 
 #lightbox_modal_media {
     width: 100%;
+}
+
+#lightbox_modal_main {
+    display: flex;
+    align-items: center;
 }
 
 form {

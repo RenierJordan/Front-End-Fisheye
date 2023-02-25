@@ -86,7 +86,7 @@ async function replaceMedias(medias) {
 }
 
 
-function sortGalery(galery, sortOption) {
+export function sortGalery(galery, sortOption) {
     let sortedGalery = galery;
 
     switch (sortOption) {

@@ -1,4 +1,4 @@
-import { getPhotographersId, getMedias} from "../pages/photographer.js";
+import { getPhotographersId, getMedias, sortGalery} from "../pages/photographer.js";
 
 
 function displayLightbox() {
@@ -16,7 +16,13 @@ function closeLightbox() {
 const closebox = document.getElementById("closeLightbox");
 closebox.addEventListener('click', ()=>closeLightbox());
 
+const btnPrevious = document.getElementById("previous");
+const btnNext = document.getElementById("next");
+
+let testId = 0 ;
+
 async function openLightboxModal(mediaId) {
+    testId = mediaId;
     const photographerId = getPhotographersId();
     const galery = await getMedias(photographerId);
     const mediaObject = galery.find(media => media.id == mediaId);
@@ -53,7 +59,7 @@ async function openLightboxModal(mediaId) {
 
     lightboxFigure.appendChild(lightboxMedia);
     lightboxFigure.appendChild(mediaTitle);
-    lightboxModalMain.appendChild(lightboxFigure);
+    lightboxModalMain.insertBefore(lightboxFigure,lightboxModalMain.lastElementChild);
 
     displayLightbox();
 
@@ -72,3 +78,56 @@ const mediaDOM = document.querySelectorAll('.article-media');
     });
 
 };
+
+async function NextMedia(mediaId) {
+    const photographerId = getPhotographersId();
+    const galery = await getMedias(photographerId);
+    const sortOption = document.getElementById("Tri").value;
+    let sortedGalery = sortGalery(galery, sortOption);
+    const mediaObject = sortedGalery.find(media => media.id == mediaId);
+
+    
+    const lightboxFigure = document.querySelector(".lightboxFigure")
+    
+    
+    for(let i=0; i<sortedGalery.length; i++) {
+        if (sortedGalery[i]== mediaObject) {
+            lightboxFigure.remove();
+            if (i==sortedGalery.length-1){
+                openLightboxModal(sortedGalery[0].id);
+            }
+            else  openLightboxModal(sortedGalery[i+1].id);
+            
+        }
+    }
+ 
+}
+
+async function PreviousMedia(mediaId) {
+    const photographerId = getPhotographersId();
+    const galery = await getMedias(photographerId);
+    const sortOption = document.getElementById("Tri").value;
+    let sortedGalery = sortGalery(galery, sortOption);
+    const mediaObject = sortedGalery.find(media => media.id == mediaId);
+
+    
+    const lightboxFigure = document.querySelector(".lightboxFigure")
+    
+    
+    for(let i=0; i<sortedGalery.length; i++) {
+        if (sortedGalery[i]== mediaObject) {
+            lightboxFigure.remove();
+            if (i==0){
+                openLightboxModal(sortedGalery[sortedGalery.length-1].id);
+            }
+            else  openLightboxModal(sortedGalery[i-1].id);
+            
+        }
+    }
+ 
+}
+
+
+
+btnNext.addEventListener('click',()=> NextMedia(testId) );
+btnPrevious.addEventListener('click',()=> PreviousMedia(testId) );
