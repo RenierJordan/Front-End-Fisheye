@@ -18,21 +18,31 @@ function galeryFactory(data) {
             media = document.createElement('video');
             media.setAttribute("src", videos);
         }
-        media.setAttribute("class", "article-media");
+        media.setAttribute("class", "article-media notLiked");
         media.setAttribute('data-id', `${id}`)
+        
+        
+
 
         const description = document.createElement( 'div' );
 
         const titre =  document.createElement( 'p' );
         titre.textContent = title;
 
+        const divlike = document.createElement( 'div' );
+        divlike.setAttribute("class", "article-media-likes")
         const like = document.createElement( 'p' );
+        const likesvg = document.createElement( 'i' );
+        likesvg.setAttribute("class", "fa-regular fa-heart like-click")
+        likesvg.setAttribute('data-isLiked', false)
         like.textContent = likes;
+        divlike.appendChild(like);
+        divlike.appendChild(likesvg);
 
         article.appendChild(media);
         article.appendChild(description);
         description.appendChild(titre);
-        description.appendChild(like);
+        description.appendChild(divlike);
 
         return (article);
     }

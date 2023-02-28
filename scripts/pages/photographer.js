@@ -1,4 +1,5 @@
 import { mediaListener } from "../utils/lightbox.js";
+import { UpdateLikes, test } from "../utils/likes.js";
 
 //Mettre le code JavaScript lié à la page photographer.html
 export function getPhotographersId(){
@@ -35,7 +36,7 @@ export async function getMedias(Id) {
 
 
 
-async function displayMedias(medias) {
+async function displayMedias(medias, MemoireLike) {
     
     const galerySection = document.querySelector(".galery-section");
 
@@ -44,9 +45,26 @@ async function displayMedias(medias) {
         const galeryModel = galeryFactory(media);
         const galeryCardDOM = galeryModel.getGaleryCardDOM();
         galerySection.appendChild(galeryCardDOM);
+
+        
+    });
+
+    const mediaDOM = document.querySelectorAll('.article-media');
+
+        mediaDOM.forEach((media) => {
+        const mediaId = media.dataset.id;
+        const likeElement = media.nextSibling.childNodes[1].childNodes[1]
+        likeElement.setAttribute('data-isliked', MemoireLike[mediaId])
+
+        if (likeElement.dataset.isliked == "true") {
+            likeElement.previousSibling.innerHTML ++
+            likeElement.setAttribute('class', "fa-solid fa-heart like-click")
+        }
+        
     });
 
     mediaListener();
+    test();
     
 };
 
@@ -56,34 +74,45 @@ async function replaceMedias(medias) {
     const galerySection = document.querySelector(".galery-section");
     const galeryArticles = document.querySelectorAll(".galery-article");
 
+    let MemoireLike = {}
+
+
     galeryArticles.forEach((article) => {
+        const LikeId = article.firstChild.dataset.id
+        const isLiked = article.childNodes[1].childNodes[1].childNodes[1].dataset.isliked
+        MemoireLike[LikeId]= isLiked
         article.remove();
     });
-
-    displayMedias(medias);
+    console.log(MemoireLike)
+    displayMedias(medias, MemoireLike);
     
 };
-
+let SumLikes = 0;
  async function displayEncart(medias, photographers) {
     const photographerModel = photographerFactory(photographers);
 
-    let SumLikes = 0;
+    
     
     medias.forEach((media) => {
         const galeryModel = galeryFactory(media);
         SumLikes+= galeryModel.likes;
     });
 
-    const encartTarif = document.querySelector(".tarif");
+    const encartTarif = document.querySelector(".encart-tarif");
+    const encartLikes = document.querySelector(".encart-tarif_likes");
     const prix = document.createElement( 'p' );
     prix.textContent = photographerModel.price+"€ / jour";
     encartTarif.appendChild(prix);
 
     
     const Likes = document.createElement( 'p' );
+    Likes.setAttribute("class","totalLikes");
     Likes.textContent = SumLikes;
-    encartTarif.insertBefore(Likes, encartTarif.firstChild);
+    encartLikes.insertBefore(Likes, encartLikes.firstChild);
+
+   
 }
+
 
 
 export function sortGalery(galery, sortOption) {
@@ -118,11 +147,15 @@ async function updateGalery(sortOption) {
         displayMedias(sortedGalery);
     }
     
-
+    
 };
 
 const SelectTri = document.getElementById("Tri");
 SelectTri.addEventListener("change", ()=>updateGalery(SelectTri.value) ); 
+
+
+
+
 
 async function init() {
     // Récupère les datas du photographe
