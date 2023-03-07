@@ -29,7 +29,7 @@ async function displayPhotographer(photographers) {
 }
 
 export async function getMedias(Id) {
-    const response = await fetch('/data/photographers.json');
+    const response = await fetch('./data/photographers.json');
     const jsonData = await response.json();
     
     return jsonData.media.filter(media => media.photographerId == Id);
