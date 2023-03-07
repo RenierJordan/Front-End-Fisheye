@@ -1,6 +1,3 @@
-import { getPhotographersId, getMedias, sortGalery} from "../pages/photographer.js";
-
-
 export async function UpdateLikes(mediaId) {
 
     
@@ -8,8 +5,7 @@ export async function UpdateLikes(mediaId) {
     const likeElement = mediaObject.nextSibling.childNodes[1].childNodes[1];
     const TotalLikes = document.querySelector(".totalLikes");
     const isLiked = likeElement.dataset.isliked;
-    console.log(mediaObject)
-    console.log(isLiked)
+    
     if (isLiked == "true"){
         likeElement.previousSibling.innerHTML --
         TotalLikes.innerHTML -- ;
@@ -25,12 +21,12 @@ export async function UpdateLikes(mediaId) {
 }
 
 
-export function test(){
+export function LikeListener(){
     const mediaDOM = document.querySelectorAll('.article-media');
 
         mediaDOM.forEach((media) => {
 
-            media.nextSibling.childNodes[1].childNodes[1].addEventListener('click', function(e) {
+            media.nextSibling.childNodes[1].childNodes[1].addEventListener('click', function() {
                 
                 const mediaId =media.dataset.id;
                 UpdateLikes(mediaId);                            

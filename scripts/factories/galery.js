@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 function galeryFactory(data) {
     const { date, id, likes, photographerId, price, title, image, video } = data;
 
@@ -10,16 +11,17 @@ function galeryFactory(data) {
         article.setAttribute('class', 'galery-article')
 
         let media;
-        if (data.hasOwnProperty('image')) {
+        if (Object.prototype.hasOwnProperty.call(data, 'image')) {
             media = document.createElement( 'img' );
             media.setAttribute("src", picture);
         }
-        else if (data.hasOwnProperty('video')) {
+        else if (Object.prototype.hasOwnProperty.call(data, 'video')) {
             media = document.createElement('video');
             media.setAttribute("src", videos);
         }
         media.setAttribute("class", "article-media notLiked");
         media.setAttribute('data-id', `${id}`)
+        media.setAttribute('alt', `${title} , closeup view`)
         
         
 
@@ -34,6 +36,7 @@ function galeryFactory(data) {
         const like = document.createElement( 'p' );
         const likesvg = document.createElement( 'i' );
         likesvg.setAttribute("class", "fa-regular fa-heart like-click")
+        likesvg.setAttribute("aria-label", "likes")
         likesvg.setAttribute('data-isLiked', false)
         like.textContent = likes;
         divlike.appendChild(like);
@@ -47,5 +50,5 @@ function galeryFactory(data) {
         return (article);
     }
 
-    return { title, picture, likes, price,  getGaleryCardDOM}
+    return { date, title, picture, likes, price,  getGaleryCardDOM}
 }

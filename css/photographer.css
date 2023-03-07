@@ -12,8 +12,8 @@
     place-content: center;
     position: fixed;
     width: 100%;
-    right: 5%;
-    top: 5%;
+    right: 0;
+    top: 0;
     height: 100%;
     z-index: 1;
 
@@ -83,23 +83,31 @@ i {
     font-size: 18px;
     font-weight: bold;
 }
+#Tri {
+    background-color: #911C1C;
+    color: white;
+    border-radius: 5px;
+    border: 2px solid #911C1C;
+    height: 30px;
+}
 
 .galery-section {
     display: grid;
     gap: 2rem;
     grid-template-columns: 1fr 1fr 1fr; 
     justify-items: center;
+    margin-bottom: 100px;
 }
 
 .galery-section article {
-    width: 300px;
-    height: 350px;
+    width: 25vw;
+    height: fit-content;
     object-fit: cover;
 }
 
 .article-media {
     width: 100%;
-    height: 300px;
+    height: 25vw;
     object-fit: cover;
     border-radius: 5px;
 }
@@ -197,34 +205,51 @@ i[data-isliked="true"] {
     position: absolute;
     top: 5rem;
     border-radius: 5px;
-    background-color: lightgray;
-    width: 50%;
+    background-color: #FAFAFA;
+    width: fit-content;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
     margin: auto;
+    font-size: 25px;
+    color: #901C1C;
 }
 
 
 
-.lightbox img {
+.lightbox i {
     cursor: pointer;
 }
 
-.lightbox header h2 {
-    font-size: 64px;
-    font-weight: normal;
-    text-align: center;
+.lightboxFigure {
+    margin: 1rem 0;
 }
 
-#lightbox_modal_media {
+.lightbox_header {
+    display: inline-flex;
+    justify-content: end;
     width: 100%;
+    
+}
+.lightbox_header i {
+    padding: 1rem 1rem 0 0;
+}
+#lightbox_modal_media {
+    max-width: 60vw;
+    max-height: 75vh;
+    max-width: 60dvw;
+    max-height: 75dvh;
+    border-radius: 4px;
 }
 
 #lightbox_modal_main {
     display: flex;
     align-items: center;
+}
+
+#previous, #next {
+    margin: 1.5rem;
 }
 
 form {

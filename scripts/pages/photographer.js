@@ -1,12 +1,13 @@
 import { mediaListener } from "../utils/lightbox.js";
-import { UpdateLikes, test } from "../utils/likes.js";
+import { LikeListener } from "../utils/likes.js";
+
 
 //Mettre le code JavaScript lié à la page photographer.html
 export function getPhotographersId(){
     let params = (new URL(document.location)).searchParams;
     let id = params.get('id');
     return id;
-};
+}
 
 async function getPhotographers(Id) {
     const response = await fetch('/data/photographers.json');
@@ -17,6 +18,7 @@ async function getPhotographers(Id) {
 
 async function displayPhotographer(photographers) {
     const photographHeader = document.querySelector(".photograph-header")   
+    // eslint-disable-next-line no-undef
     const photographerModel = photographerFactory(photographers);
     const InfoCardDOM = photographerModel.getInfoCardDOM();
     const PictureCardDOM = photographerModel.getPictureCardDOM();
@@ -24,14 +26,14 @@ async function displayPhotographer(photographers) {
     photographHeader.appendChild(PictureCardDOM);
     
     
-};
+}
 
 export async function getMedias(Id) {
     const response = await fetch('/data/photographers.json');
     const jsonData = await response.json();
     
     return jsonData.media.filter(media => media.photographerId == Id);
-};
+}
 
 
 
@@ -42,6 +44,7 @@ async function displayMedias(medias, MemoireLike) {
 
 
     medias.forEach((media) => {
+        // eslint-disable-next-line no-undef
         const galeryModel = galeryFactory(media);
         const galeryCardDOM = galeryModel.getGaleryCardDOM();
         galerySection.appendChild(galeryCardDOM);
@@ -64,14 +67,13 @@ async function displayMedias(medias, MemoireLike) {
     });
 
     mediaListener();
-    test();
+    LikeListener();
     
-};
+}
 
 async function replaceMedias(medias) {
    
     
-    const galerySection = document.querySelector(".galery-section");
     const galeryArticles = document.querySelectorAll(".galery-article");
 
     let MemoireLike = {}
@@ -86,14 +88,17 @@ async function replaceMedias(medias) {
     console.log(MemoireLike)
     displayMedias(medias, MemoireLike);
     
-};
+}
+
 let SumLikes = 0;
  async function displayEncart(medias, photographers) {
+    // eslint-disable-next-line no-undef
     const photographerModel = photographerFactory(photographers);
 
     
     
     medias.forEach((media) => {
+        // eslint-disable-next-line no-undef
         const galeryModel = galeryFactory(media);
         SumLikes+= galeryModel.likes;
     });
@@ -148,7 +153,7 @@ async function updateGalery(sortOption) {
     }
     
     
-};
+}
 
 const SelectTri = document.getElementById("Tri");
 SelectTri.addEventListener("change", ()=>updateGalery(SelectTri.value) ); 
@@ -168,6 +173,6 @@ async function init() {
     displayPhotographer(photographers);
     displayEncart(medias, photographers);
     
-};
+}
 
 init();

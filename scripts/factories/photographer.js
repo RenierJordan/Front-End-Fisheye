@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 function photographerFactory(data) {
     const { name, id, city, country, tagline, price, portrait } = data;
 
@@ -7,6 +8,7 @@ function photographerFactory(data) {
         const lien = document.createElement( 'a' );
         lien.setAttribute("href", `./photographer.html?id=${id}`);//
         const article = document.createElement( 'article' );
+        article.setAttribute("aria-label",name)
         
         const img = document.createElement( 'img' );
         img.setAttribute("src", picture)
@@ -63,6 +65,7 @@ function photographerFactory(data) {
     function getPictureCardDOM() {
         const img = document.createElement( 'img' );
         img.setAttribute("src", picture);
+        img.setAttribute("alt", name);
         return (img);
     }
 

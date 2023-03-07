@@ -13,17 +13,17 @@
   </head>
   <body>
     <header>
-      <img src="assets/images/logo.png" class="logo" />
+      <img src="assets/images/logo.png" class="logo"  alt="Fisheye home page"/>
     </header>
     <main id="main">
       <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+        <button class="contact_button" aria-label="Contact Me" onclick="displayModal()">Contactez-moi</button>
       </div>
       <div class="photograph-section">
         <div class="sort">
           <label for="Tri">Trier par :</label>
 
-            <select name="Tri" id="Tri">
+            <select name="Tri" id="Tri" aria-label="Order by">
               <option value="likes">Popularité</option>
               <option value="date">Date</option>
               <option value="title">Titre</option>
@@ -39,11 +39,11 @@
         </section>
       </div>
     </main>
-    <div id="contact_modal">
+    <div id="contact_modal" aria-label="Contact Me">
 			<div class="modal">
 				<header>
           <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+          <img src="assets/icons/close.svg" onclick="closeModal()" aria-label="Close Contact form"/>
         </header>
 				<form id="contact">
 					<div>
@@ -55,6 +55,7 @@
                   type="text"
                   id="first"
                   name="first"
+                  aria-label="First name"
                 />
               </div>
             <div
@@ -65,6 +66,7 @@
                   type="text"
                   id="last"
                   name="last"
+                  aria-label="Last name"
                 />
               </div>
             <div
@@ -75,6 +77,7 @@
                   type="email"
                   id="email"
                   name="email"
+                  aria-label="Email"
                 />
               </div>
             <div
@@ -85,26 +88,27 @@
                   type="message"
                   id="message"
                   name="message"
+                  aria-label="Your message"
                 />
               </div>
 					</div>
-          <button class="contact_button btn-submit">Envoyer</button>
+          <button class="contact_button btn-submit" aria-label="Send">Envoyer</button>
 				</form>
 			</div>
 		</div>
     <div id="lightbox_modal">
       <div class="lightbox">
-        
-          <img src="assets/icons/close.svg" id="closeLightbox"  />
-        
+          <div class="lightbox_header">
+            <i id="closeLightbox" class="fa-sharp fa-solid fa-xmark" aria-label="Close dialog"></i>
+          </div>
         <div id="lightbox_modal_main">
-          <span id="previous"><</span>
-          <span id="next">></span>
+          <i id="previous" class="fa-solid fa-angle-left" aria-label="Previous image"></i>
+          <i id="next" class="fa-solid fa-angle-right" aria-label="Next image"></i>
         </div>
 
       </div>
     </div>
-    <script src="scripts/factories/photographer.js"></script>
+    <script src="scripts/factories/photographer.js" ></script>
     <script src="scripts/factories/galery.js"></script>
     <script src="/scripts/pages/photographer.js" type="module"></script>
     <script src="/scripts/utils/contactForm.js"></script>

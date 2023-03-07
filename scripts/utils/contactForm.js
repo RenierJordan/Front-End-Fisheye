@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 function displayModal() {
     const modal = document.getElementById("contact_modal");
 	modal.style.display = "flex";
@@ -35,7 +36,7 @@ function LastNameValidation() {
 }
 
 function emailValidation() { 
-    const mailFormat = /\b[\w\.-]+@[\w\.-]+\.\w{2,4}\b/gi;
+    const mailFormat = /\b[\w.-]+@[\w.-]+\.\w{2,4}\b/gi;
     const inputValue = document.getElementById("email").value;
     // on verifie que l'input correspond au format d'une adresse mail
     if (mailFormat.test(inputValue)) {
@@ -43,7 +44,7 @@ function emailValidation() {
     }
     else {
       return false;
-    };
+    }
 }
 function messageValidation() {
     let inputValue = messageInput.value;

@@ -38,18 +38,19 @@ async function openLightboxModal(mediaId) {
 
     let lightboxMedia, mediaLink;
 
-    if (mediaObject.hasOwnProperty('image')) {
+    if (Object.prototype.hasOwnProperty.call(mediaObject, 'image')) {
         lightboxMedia = document.createElement('img');
         mediaLink = `./assets/photographers/${photographerId}/${image}`;
-    } else if (mediaObject.hasOwnProperty('video')) {
+    } else if (Object.prototype.hasOwnProperty.call(mediaObject, 'video')) {
         lightboxMedia = document.createElement('video');
         mediaLink = `./assets/photographers/${photographerId}/${video}`;
         lightboxMedia.setAttribute('controls', '')
-    };
+    }
     lightboxMedia.setAttribute('src', mediaLink);
     lightboxMedia.setAttribute('id', 'lightbox_modal_media');
     lightboxMedia.setAttribute('data-mediaid', `${id}`)
     lightboxMedia.setAttribute('aria-label', 'image closeup view');
+    lightboxMedia.setAttribute('alt', `${title}`);
     lightboxMedia.setAttribute('tabindex', '0');
 
     const mediaTitle = document.createElement('figcaption');
@@ -70,14 +71,14 @@ const mediaDOM = document.querySelectorAll('.article-media');
 
     mediaDOM.forEach((media) => {
         
-        media.addEventListener('click', function(e) {
+        media.addEventListener('click', function() {
             const mediaId = parseInt(this.dataset.id);
             
             openLightboxModal(mediaId);
         });
     });
 
-};
+}
 
 async function NextMedia(mediaId) {
     const photographerId = getPhotographersId();
