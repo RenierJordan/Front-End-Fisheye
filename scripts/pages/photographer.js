@@ -10,7 +10,7 @@ export function getPhotographersId(){
 }
 
 async function getPhotographers(Id) {
-    const response = await fetch('/data/photographers.json');
+    const response = await fetch('./data/photographers.json');
     const jsonData = await response.json();
     
     return jsonData.photographers.find(photographer => photographer.id == Id);
