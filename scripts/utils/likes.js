@@ -27,10 +27,19 @@ export function LikeListener(){
         mediaDOM.forEach((media) => {
 
             media.nextSibling.childNodes[1].childNodes[1].addEventListener('click', function() {
-                
                 const mediaId =media.dataset.id;
                 UpdateLikes(mediaId);                            
-               
             });
+            media.nextSibling.childNodes[1].addEventListener('keypress', function (e) {
+                if (e.key === 'Enter') {
+                    const mediaId =media.dataset.id;
+                UpdateLikes(mediaId); 
+                  }
+                                           
+            });
+
+
         });
 }
+
+   

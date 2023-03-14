@@ -25,6 +25,9 @@ async function displayPhotographer(photographers) {
     photographHeader.insertBefore(InfoCardDOM, photographHeader.firstChild);
     photographHeader.appendChild(PictureCardDOM);
     
+    let ContactName = document.getElementById("ContactName")
+    ContactName.textContent += photographerModel.name
+    
     
 }
 

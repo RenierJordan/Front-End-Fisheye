@@ -9,6 +9,7 @@ function galeryFactory(data) {
 
         const article = document.createElement( 'article' );
         article.setAttribute('class', 'galery-article')
+        
 
         let media;
         if (Object.prototype.hasOwnProperty.call(data, 'image')) {
@@ -22,6 +23,8 @@ function galeryFactory(data) {
         media.setAttribute("class", "article-media notLiked");
         media.setAttribute('data-id', `${id}`)
         media.setAttribute('alt', `${title} , closeup view`)
+        media.setAttribute("tabindex", 0);
+
         
         
 
@@ -30,9 +33,11 @@ function galeryFactory(data) {
 
         const titre =  document.createElement( 'p' );
         titre.textContent = title;
+        titre.setAttribute("tabindex", 0);
 
         const divlike = document.createElement( 'div' );
         divlike.setAttribute("class", "article-media-likes")
+        divlike.setAttribute("tabindex", 0);
         const like = document.createElement( 'p' );
         const likesvg = document.createElement( 'i' );
         likesvg.setAttribute("class", "fa-regular fa-heart like-click")

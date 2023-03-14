@@ -1,13 +1,46 @@
+
+const modal = document.getElementById("contact_modal");
+modal.addEventListener('keypress', function (e) {
+    if (e.keyCode == 13) { 
+      closeModal();
+    }
+  });
+  
 // eslint-disable-next-line no-unused-vars
 function displayModal() {
-    const modal = document.getElementById("contact_modal");
-	modal.style.display = "flex";
+    const main = document.getElementById("main");
+    main.setAttribute('aria-hidden', true)
+
+    
+    const divmodal = document.querySelector(".modal")
+    modal.style.display = "flex";
+    divmodal.setAttribute('aria-hidden', false)
+
+    const modalCloseBtn = document.getElementById("closemodal")
+    modalCloseBtn.focus()
+
+    modal.addEventListener('keydown', function (e) {
+      if (e.keyCode == 27) { 
+        closeModal();
+      }
+    });
 }
 
+
 function closeModal() {
-    const modal = document.getElementById("contact_modal");
+    const main = document.getElementById("main");
+    main.setAttribute('aria-hidden', false)
+
+    
+    const divmodal = document.querySelector(".modal")
     modal.style.display = "none";
+    divmodal.setAttribute('aria-hidden', true)
+
+    const modalOpenBtn = document.querySelector(".contact_button")
+    modalOpenBtn.focus()
 }
+
+
 
 
 const form = document.querySelector("form");

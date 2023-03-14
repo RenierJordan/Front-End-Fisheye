@@ -1,12 +1,38 @@
 import { getPhotographersId, getMedias, sortGalery} from "../pages/photographer.js";
 
-
+const lightboxCloseBtn = document.getElementById("closeLightbox")
+lightboxCloseBtn.addEventListener('keypress', function (e) {
+    if (e.keyCode == 13) { 
+      closeLightbox();
+    }
+  });
 function displayLightbox() {
+    const main = document.getElementById("main");
+    main.setAttribute('aria-hidden', true)
+
+    const divLightbox = document.querySelector(".lightbox")
+    divLightbox.setAttribute('aria-hidden', false)
+
     const lightboxModal = document.getElementById("lightbox_modal");
 	lightboxModal.style.display = "flex";
+
+    
+    lightboxCloseBtn.focus()
+
+    lightboxModal.addEventListener('keydown', function (e) {
+        if (e.keyCode == 27) { 
+          closeLightbox();
+        }
+      });
 }
 
 function closeLightbox() {
+    const main = document.getElementById("main");
+    main.setAttribute('aria-hidden', false)
+
+    const divLightbox = document.querySelector(".lightbox")
+    divLightbox.setAttribute('aria-hidden', true)
+
     const lightboxModal = document.getElementById("lightbox_modal");
     const lightboxFigure = document.querySelector(".lightboxFigure")
     lightboxModal.style.display = "none";
@@ -73,9 +99,18 @@ const mediaDOM = document.querySelectorAll('.article-media');
         
         media.addEventListener('click', function() {
             const mediaId = parseInt(this.dataset.id);
-            
             openLightboxModal(mediaId);
         });
+
+        media.addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                const mediaId = parseInt(this.dataset.id);
+                openLightboxModal(mediaId);
+              }
+                                       
+        });
+
+
     });
 
 }
@@ -131,4 +166,21 @@ async function PreviousMedia(mediaId) {
 
 
 btnNext.addEventListener('click',()=> NextMedia(testId) );
+btnNext.addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') {
+        NextMedia(testId);
+    }
+});
+
 btnPrevious.addEventListener('click',()=> PreviousMedia(testId) );
+btnPrevious.addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') {
+        PreviousMedia(testId);
+    }
+});
+
+/*btnNext.addEventListener('keydown', function (e) {
+    if (e.keyCode == 9) { 
+      closeLightbox();
+    }
+  });*/

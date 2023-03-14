@@ -33,21 +33,21 @@ i {
     padding: 0 2rem;
 }
 
-.description-name {
+.photographer-name {
     color: #D3573C;
     font-weight: 400;
     font-size: 64px;
     line-height: 83px;
     margin: 0;
 }
-.description-location {
+.photographer-description-location {
     font-weight: 400;
     font-size: 24px;
     line-height: 31px;
     color: #901C1C;
 }
 
-.description-bio {
+.photographer-description-bio {
     font-weight: 400;
     font-size: 18px;
     line-height: 23px;
@@ -188,6 +188,7 @@ i[data-isliked="true"] {
 .modal header {
     justify-content: space-between;
     width: 100%;
+    height: auto;
 }
 
 .modal header img {
@@ -199,6 +200,7 @@ i[data-isliked="true"] {
     font-size: 64px;
     font-weight: normal;
     text-align: center;
+    margin: 0 5% 0 0;
 }
 
 .lightbox {

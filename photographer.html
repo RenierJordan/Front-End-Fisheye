@@ -5,6 +5,7 @@
     <link href="css/photographer.css" rel="stylesheet" type="text/css" />
 
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/a6d8cf7ee7.js" crossorigin="anonymous"></script>
@@ -13,9 +14,9 @@
   </head>
   <body>
     <header>
-      <img src="assets/images/logo.png" class="logo"  alt="Fisheye home page"/>
+      <img src="assets/images/logo.png" class="logo"  alt="Fisheye home page" tabindex="0"/>
     </header>
-    <main id="main">
+    <main id="main" aria-hidden="false">
       <div class="photograph-header">
         <button class="contact_button" aria-label="Contact Me" onclick="displayModal()">Contactez-moi</button>
       </div>
@@ -31,7 +32,7 @@
             </select>
         </div>
         <section class="galery-section">
-          <div class="encart-tarif">  
+          <div class="encart-tarif" tabindex="0">  
             <div class="encart-tarif_likes">
               <i class="fa-regular fa-heart "></i>
             </div>          
@@ -39,11 +40,14 @@
         </section>
       </div>
     </main>
-    <div id="contact_modal" aria-label="Contact Me">
-			<div class="modal">
+    <div id="contact_modal" >
+			<div class="modal" aria-label="Contact Me" role="dialog" aria-hidden="true">
 				<header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" aria-label="Close Contact form"/>
+          <div>
+            <h2 id="ContactName">Contactez-moi </h2>
+          </div>
+          
+          <img src="assets/icons/close.svg" onclick="closeModal()" aria-label="Close Contact form" id="closemodal" tabindex="0"/>
         </header>
 				<form id="contact">
 					<div>
@@ -56,6 +60,7 @@
                   id="first"
                   name="first"
                   aria-label="First name"
+                  tabindex="0"
                 />
               </div>
             <div
@@ -67,6 +72,7 @@
                   id="last"
                   name="last"
                   aria-label="Last name"
+                  tabindex="0"
                 />
               </div>
             <div
@@ -78,6 +84,7 @@
                   id="email"
                   name="email"
                   aria-label="Email"
+                  tabindex="0"
                 />
               </div>
             <div
@@ -89,21 +96,22 @@
                   id="message"
                   name="message"
                   aria-label="Your message"
+                  tabindex="0"
                 />
               </div>
 					</div>
-          <button class="contact_button btn-submit" aria-label="Send">Envoyer</button>
+          <button class="contact_button btn-submit" aria-label="Send" tabindex="0">Envoyer</button>
 				</form>
 			</div>
 		</div>
     <div id="lightbox_modal">
       <div class="lightbox">
           <div class="lightbox_header">
-            <i id="closeLightbox" class="fa-sharp fa-solid fa-xmark" aria-label="Close dialog"></i>
+            <i id="closeLightbox" class="fa-sharp fa-solid fa-xmark" aria-label="Close dialog" tabindex="0"></i>
           </div>
         <div id="lightbox_modal_main">
-          <i id="previous" class="fa-solid fa-angle-left" aria-label="Previous image"></i>
-          <i id="next" class="fa-solid fa-angle-right" aria-label="Next image"></i>
+          <i id="previous" class="fa-solid fa-angle-left" aria-label="Previous image" tabindex="0"></i>
+          <i id="next" class="fa-solid fa-angle-right" aria-label="Next image"tabindex="0"></i>
         </div>
 
       </div>

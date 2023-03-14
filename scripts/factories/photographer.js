@@ -41,25 +41,32 @@ function photographerFactory(data) {
     }
 
     function getInfoCardDOM() {
-        const description = document.createElement( 'div' );
+        const info = document.createElement( 'div' );
 
         const h2 = document.createElement( 'h2' );
         h2.textContent = name;
-        h2.setAttribute("class", "description-name");
+        h2.setAttribute("class", "photographer-name");
+        h2.setAttribute("tabindex", 0);
        
         const location = document.createElement( 'p' );
         location.textContent = city+", "+country;
-        location.setAttribute("class", "description-location");
+        location.setAttribute("class", "photographer-description-location");
 
         const bio = document.createElement( 'p' );
         bio.textContent = tagline;
-        bio.setAttribute("class", "description-bio");
+        bio.setAttribute("class", "photographer-description-bio");
 
-        description.appendChild(h2);
+        const description = document.createElement( 'div' );
+        description.setAttribute("class", "photographer-description");
+        description.setAttribute("tabindex", 0);
+
         description.appendChild(location);
         description.appendChild(bio);
+        info.appendChild(h2);
+        info.appendChild(description);
+        
 
-        return (description);
+        return (info);
     }
 
     function getPictureCardDOM() {
