@@ -15,14 +15,15 @@ function galeryFactory(data) {
         if (Object.prototype.hasOwnProperty.call(data, 'image')) {
             media = document.createElement( 'img' );
             media.setAttribute("src", picture);
+            media.setAttribute('alt', `${title} , closeup view`)
         }
         else if (Object.prototype.hasOwnProperty.call(data, 'video')) {
             media = document.createElement('video');
             media.setAttribute("src", videos);
+            media.setAttribute('title', `${title} , closeup view`)
         }
         media.setAttribute("class", "article-media notLiked");
         media.setAttribute('data-id', `${id}`)
-        media.setAttribute('alt', `${title} , closeup view`)
         media.setAttribute("tabindex", 0);
 
         

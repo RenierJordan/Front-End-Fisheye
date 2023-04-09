@@ -1,3 +1,4 @@
+
 #contact_modal {
     display: none;
     
@@ -26,11 +27,13 @@ i {
 .photograph-header {
     display: flex;
     background-color: #FAFAFA;
-    height: 300px;
     margin: 0 100px;
     align-items: center;
     justify-content: space-between;
     padding: 0 2rem;
+}
+.photograph-header div {
+    text-align: center;
 }
 
 .photographer-name {
@@ -58,6 +61,7 @@ i {
     width: 200px;
     border-radius: 50%;
     object-fit: cover;
+    padding: 1rem;
 }
 
 .contact_button {
@@ -303,3 +307,31 @@ form input {
   .formData[data-error-visible="true"] .text-control {
     border: 2px solid red;
   }
+
+  @media(max-width: 600px)  {
+    .photograph-header {
+        margin: 0;
+    }
+    .galery-section article > div > p {
+        display: none;
+    }
+    .galery-section article > div {
+        justify-content: end;
+    }
+    .encart-tarif{
+        min-width: 100%;
+        right: 0;
+        border-radius: 0;
+    }
+    
+  } 
+  @media(max-width: 800px)  {
+    .photograph-header {
+        flex-direction: column;
+        height: fit-content;
+        min-width: 200px;
+    }
+    .photograph-section {
+        margin: 0;
+    }
+}

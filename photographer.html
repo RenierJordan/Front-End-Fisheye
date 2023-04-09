@@ -9,7 +9,7 @@
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/a6d8cf7ee7.js" crossorigin="anonymous"></script>
-    
+
     <title>Fisheye - photographe </title>
   </head>
   <body>
@@ -24,7 +24,7 @@
         <div class="sort">
           <label for="Tri">Trier par :</label>
 
-            <select name="Tri" id="Tri" aria-label="Order by">
+            <select name="Tri" id="Tri" class="tri-select" data-minimum-results-for-search="Infinity" aria-label="Order by">
               <option value="likes">Popularité</option>
               <option value="date">Date</option>
               <option value="title">Titre</option>
@@ -34,7 +34,7 @@
         <section class="galery-section">
           <div class="encart-tarif" tabindex="0">  
             <div class="encart-tarif_likes">
-              <i class="fa-regular fa-heart "></i>
+              <i class="fa-regular fa-heart " aria-label="J'aime"></i>
             </div>          
           </div>
         </section>

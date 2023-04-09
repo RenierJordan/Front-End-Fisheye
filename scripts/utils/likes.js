@@ -20,7 +20,7 @@ export async function UpdateLikes(mediaId) {
     }
 }
 
-
+// fonction aui ajoute en eventListener sur les icones Likes qui permet d'ajouter ou retirer des likes
 export function LikeListener(){
     const mediaDOM = document.querySelectorAll('.article-media');
 

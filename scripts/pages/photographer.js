@@ -2,13 +2,14 @@ import { mediaListener } from "../utils/lightbox.js";
 import { LikeListener } from "../utils/likes.js";
 
 
-//Mettre le code JavaScript lié à la page photographer.html
+//Recupere l'ID present dans l'URL
 export function getPhotographersId(){
     let params = (new URL(document.location)).searchParams;
     let id = params.get('id');
     return id;
 }
 
+//Recupere le photographe correspondant a l'ID
 async function getPhotographers(Id) {
     const response = await fetch('./data/photographers.json');
     const jsonData = await response.json();
@@ -31,6 +32,7 @@ async function displayPhotographer(photographers) {
     
 }
 
+//Recupere les medias grace a l'ID du photographe
 export async function getMedias(Id) {
     const response = await fetch('./data/photographers.json');
     const jsonData = await response.json();
@@ -74,6 +76,7 @@ async function displayMedias(medias, MemoireLike) {
     
 }
 
+//Fonction qui permet de réorganiser l'affichage des médias
 async function replaceMedias(medias) {
    
     
@@ -122,7 +125,7 @@ let SumLikes = 0;
 }
 
 
-
+//fonction qui permet de trier les medias dans un tableau en fonction de l'option de tri
 export function sortGalery(galery, sortOption) {
     let sortedGalery = galery;
 
@@ -143,6 +146,7 @@ export function sortGalery(galery, sortOption) {
     }
 } 
 
+// Fonction fait appel a la fonction d'affichage ou de reorganisation  des medias 
 async function updateGalery(sortOption) {
     const galerySection = document.querySelector(".galery-section");
     const id = getPhotographersId();
@@ -158,11 +162,9 @@ async function updateGalery(sortOption) {
     
 }
 
+// Ajout d'un EventListener sur le bouton de filtre qui fait appel a la fonction au dessus avec comme parametre le filtre selectioné
 const SelectTri = document.getElementById("Tri");
 SelectTri.addEventListener("change", ()=>updateGalery(SelectTri.value) ); 
-
-
-
 
 
 async function init() {

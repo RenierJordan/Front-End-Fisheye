@@ -1,5 +1,6 @@
 import { getPhotographersId, getMedias, sortGalery} from "../pages/photographer.js";
 
+const lightboxModal = document.getElementById("lightbox_modal");
 const lightboxCloseBtn = document.getElementById("closeLightbox")
 lightboxCloseBtn.addEventListener('keypress', function (e) {
     if (e.keyCode == 13) { 
@@ -13,17 +14,12 @@ function displayLightbox() {
     const divLightbox = document.querySelector(".lightbox")
     divLightbox.setAttribute('aria-hidden', false)
 
-    const lightboxModal = document.getElementById("lightbox_modal");
 	lightboxModal.style.display = "flex";
 
     
     lightboxCloseBtn.focus()
 
-    lightboxModal.addEventListener('keydown', function (e) {
-        if (e.keyCode == 27) { 
-          closeLightbox();
-        }
-      });
+      
 }
 
 function closeLightbox() {
@@ -35,8 +31,9 @@ function closeLightbox() {
 
     const lightboxModal = document.getElementById("lightbox_modal");
     const lightboxFigure = document.querySelector(".lightboxFigure")
-    lightboxModal.style.display = "none";
+    
     lightboxFigure.remove();
+    lightboxModal.style.display = "none";
 }
 
 const closebox = document.getElementById("closeLightbox");
@@ -92,6 +89,7 @@ async function openLightboxModal(mediaId) {
 
 }
 
+// fonction qui applique a chaque media un eventListener qui permet d'ouvrir la lightbox du media selectioné
 export function mediaListener() {
 const mediaDOM = document.querySelectorAll('.article-media');
 
@@ -123,7 +121,7 @@ async function NextMedia(mediaId) {
     const mediaObject = sortedGalery.find(media => media.id == mediaId);
 
     
-    const lightboxFigure = document.querySelector(".lightboxFigure")
+    let lightboxFigure = document.querySelector(".lightboxFigure")
     
     
     for(let i=0; i<sortedGalery.length; i++) {
@@ -163,7 +161,17 @@ async function PreviousMedia(mediaId) {
  
 }
 
-
+lightboxModal.addEventListener('keydown', function (e) {
+    if (e.keyCode == 27) { 
+      closeLightbox();
+    }
+    else if (e.keyCode == 39) {
+        NextMedia(testId);
+    }
+    else if (e.keyCode == 37) {
+        PreviousMedia(testId);
+    }
+      });
 
 btnNext.addEventListener('click',()=> NextMedia(testId) );
 btnNext.addEventListener('keypress', function (e) {
@@ -179,8 +187,3 @@ btnPrevious.addEventListener('keypress', function (e) {
     }
 });
 
-/*btnNext.addEventListener('keydown', function (e) {
-    if (e.keyCode == 9) { 
-      closeLightbox();
-    }
-  });*/
